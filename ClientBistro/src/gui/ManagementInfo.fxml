@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="1200" prefHeight="650"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.ManagementInfoController"
+            style="-fx-background-color: linear-gradient(to bottom, #0e1320, #111b34);">
+
+                   <top>
+        <HBox alignment="CENTER_RIGHT" spacing="12"
+              style="-fx-padding: 14 20;">
+            <Button fx:id="backBtn"
+                    text="←"
+                    onAction="#back"
+                    style="-fx-background-radius: 12;
+                           -fx-background-color: #2b2f45;
+                           -fx-text-fill: white;"/>
+
+            <Button fx:id="exitBtn"
+                    text="⏻"
+                    onAction="#exit"
+                    style="-fx-background-radius: 12;
+                           -fx-background-color: #8a1b1b;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="30"
+              style="-fx-padding: 30;">
+
+            <VBox alignment="CENTER" spacing="6"
+                  prefWidth="900"
+                  style="-fx-padding: 26 40;
+                         -fx-background-radius: 30;
+                         -fx-background-color: linear-gradient(to right, #5240d0, #e3a628);
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 25, 0.35, 0, 6);">
+
+                <Label text="Viewing Management Information"
+                       style="-fx-text-fill: white;
+                              -fx-font-size: 30;
+                              -fx-font-weight: bold;"/>
+
+                <Label text="Operational overview of restaurant activity"
+                       style="-fx-text-fill: #eeeeee;
+                              -fx-font-size: 14;"/>
+            </VBox>
+
+            <VBox spacing="20" prefWidth="600"
+                  style="-fx-padding: 26;
+                         -fx-background-radius: 22;
+                         -fx-background-color: #2b2f45;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 18, 0.3, 0, 5);">
+
+             <GridPane hgap="20" vgap="14">
+
+    <Label text="Reservations Today:"
+           GridPane.rowIndex="0" GridPane.columnIndex="0"
+           style="-fx-text-fill: white;"/>
+
+    <Label fx:id="todayReservationsLabel"
+           GridPane.rowIndex="0" GridPane.columnIndex="1"
+           style="-fx-text-fill: #ffb74d;"/>
+
+    <Label text="Reservations This Month:"
+           GridPane.rowIndex="1" GridPane.columnIndex="0"
+           style="-fx-text-fill: white;"/>
+
+    <Label fx:id="monthlyReservationsLabel"
+           GridPane.rowIndex="1" GridPane.columnIndex="1"
+           style="-fx-text-fill: #ffb74d;"/>
+
+    <Label text="Canceled Reservations:"
+           GridPane.rowIndex="2" GridPane.columnIndex="0"
+           style="-fx-text-fill: white;"/>
+
+    <Label fx:id="canceledReservationsLabel"
+           GridPane.rowIndex="2" GridPane.columnIndex="1"
+           style="-fx-text-fill: #ffb74d;"/>
+
+    <Label text="Subscribers:"
+           GridPane.rowIndex="3" GridPane.columnIndex="0"
+           style="-fx-text-fill: white;"/>
+
+    <Label fx:id="subscribersLabel"
+           GridPane.rowIndex="3" GridPane.columnIndex="1"
+           style="-fx-text-fill: #ffb74d;"/>
+
+    <Label text="Customers Currently Inside:"
+           GridPane.rowIndex="4" GridPane.columnIndex="0"
+           style="-fx-text-fill: white;"/>
+
+    <Label fx:id="currentCustomersLabel"
+           GridPane.rowIndex="4" GridPane.columnIndex="1"
+           style="-fx-text-fill: #ffb74d;"/>
+
+</GridPane>
+
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

@@ -1,22 +1,30 @@
 // This file contains material supporting section 3.7 of the textbook:
 // "Object Oriented Software Engineering" and is issued under the open-source
-// license found at www.lloseng.com 
+// license found at www.lloseng.com
 
 package common;
 
 /**
- * This interface implements the abstract method used to display
- * objects onto the client or server UIs.
+ * This interface defines the abstract method used to display
+ * messages or objects onto client or server user interfaces.
+ * <p>
+ * Any class implementing this interface must provide a concrete
+ * implementation of the {@link #display(String)} method.
+ * </p>
  *
- * @author Dr Robert Lagani&egrave;re
- * @author Dr Timothy C. Lethbridge
+ * <p>Author: Dr Robert Lagani&egrave;re, Dr Timothy C. Lethbridge</p>
  * @version July 2000
  */
-public interface ChatIF 
+public interface ChatIF
 {
-  /**
-   * Method that when overriden is used to display objects onto
-   * a UI.
-   */
-  public abstract void display(String message);
+    /**
+     * Displays a message on the UI.
+     * <p>
+     * Implementing classes should define how the message is presented,
+     * for example printing to console, updating a text area, or logging.
+     * </p>
+     *
+     * @param message the message or object to display
+     */
+    public abstract void display(String message);
 }

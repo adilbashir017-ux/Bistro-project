@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/23"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gui.TablesManagementController">
+
+        <HBox alignment="CENTER_RIGHT" spacing="12"
+              style="-fx-padding: 14 20;">
+            <Button fx:id="backBtn"
+                    text="←"
+                    onAction="#back"
+                    style="-fx-background-radius: 12;
+                           -fx-background-color: #2b2f45;
+                           -fx-text-fill: white;"/>
+
+            <Button fx:id="exitBtn"
+                    text="⏻"
+                    onAction="#exit"
+                    style="-fx-background-radius: 12;
+                           -fx-background-color: #8a1b1b;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;"/>
+        </HBox>
+
+
+
+    <Label text="Manage Tables"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <!-- Tables list -->
+    <TableView fx:id="tablesTable" prefWidth="400" prefHeight="220">
+        <columns>
+            <TableColumn fx:id="tableIdCol" text="Table ID" prefWidth="200"/>
+            <TableColumn fx:id="capacityCol" text="Capacity" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <!-- Capacity input -->
+    <TextField fx:id="capacityField"
+               promptText="Number of seats"
+               maxWidth="200"/>
+
+    <!-- Action buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Add Table" onAction="#addTable"/>
+        <Button text="Update Table" onAction="#updateTable"/>
+        <Button text="Delete Table" onAction="#deleteTable"/>
+    </HBox>
+
+    <!-- Status message -->
+    <Label fx:id="statusLabel"/>
+
+</VBox>

@@ -1,0 +1,54 @@
+.manager-card {
+    -fx-background-color: #2b2f45;
+    -fx-background-radius: 25;
+    -fx-padding: 30;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 20, 0.3, 0, 5);
+}
+
+.manager-button {
+    -fx-background-color: #3a3f5c;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 25;
+    -fx-padding: 12 30;
+    -fx-min-width: 380;
+    -fx-cursor: hand;
+}
+
+.manager-button:hover {
+    -fx-background-color: #5b4fd6;
+}
+/* ===== TOP BAR ===== */
+.top-bar {
+    -fx-padding: 14 20;
+    -fx-spacing: 10;
+}
+
+.top-button-primary {
+    -fx-background-radius: 20;
+    -fx-background-color: #5b4fd6;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 6 16;
+}
+
+.top-button-secondary {
+    -fx-background-radius: 20;
+    -fx-background-color: #2b2f45;
+    -fx-text-fill: white;
+    -fx-padding: 6 16;
+}
+
+.top-button-danger {
+    -fx-background-radius: 12;
+    -fx-background-color: #8a1b1b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.top-button-normal {
+    -fx-background-radius: 12;
+    -fx-background-color: #2b2f45;
+    -fx-text-fill: white;
+}

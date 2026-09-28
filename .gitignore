@@ -1,0 +1,22 @@
+# Java / Eclipse build output
+bin/
+target/
+*.class
+
+# IDE / OS
+.settings/
+.metadata/
+.DS_Store
+Thumbs.db
+
+# Local credentials and config
+.env
+*.env
+config.local.*
+secrets.*
+
+# Generated runtime files
+qr_*.png
+
+# Archives / temporary backups
+*.zip

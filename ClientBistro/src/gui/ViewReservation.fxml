@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox spacing="15" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/23"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="gui.ViewReservationsController">
+
+              <HBox alignment="CENTER_RIGHT" spacing="12"
+              style="-fx-padding: 14 20;">
+            <Button fx:id="backBtn"
+                    text="←"
+                    onAction="#back"
+                    style="-fx-background-radius: 12;
+                           -fx-background-color: #2b2f45;
+                           -fx-text-fill: white;"/>
+
+            <Button fx:id="exitBtn"
+                    text="⏻"
+                    onAction="#exit"
+                    style="-fx-background-radius: 12;
+                           -fx-background-color: #8a1b1b;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;"/>
+        </HBox>
+
+    <Label text="All Reservations"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+    <TableView fx:id="reservationsTable"
+               prefWidth="520"
+               prefHeight="300">
+
+        <columns>
+            <TableColumn fx:id="dateCol" text="Date" prefWidth="130"/>
+            <TableColumn fx:id="timeCol" text="Time" prefWidth="130"/>
+            <TableColumn fx:id="guestsCol" text="Guests" prefWidth="130"/>
+            <TableColumn fx:id="statusCol" text="Status" prefWidth="130"/>
+            <TableColumn fx:id="nameCol"  text="Name"  prefWidth="170"/>
+            <TableColumn fx:id="phoneCol" text="Phone" prefWidth="160"/>
+            <TableColumn fx:id="emailCol" text="Email" prefWidth="230"/>
+
+        </columns>
+
+    </TableView>
+
+</VBox>

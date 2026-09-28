@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane fx:id="anchorPane"
+            prefWidth="1200" prefHeight="700"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.InterfaceController"
+            style="-fx-background-color: linear-gradient(to bottom, #0b1220, #071019);">
+
+    <children>
+        <VBox alignment="CENTER" spacing="25"
+              AnchorPane.leftAnchor="0"
+              AnchorPane.rightAnchor="0"
+              AnchorPane.topAnchor="40">
+
+            <Label text="Select Interface"
+                   style="-fx-text-fill:white; -fx-font-size:40; -fx-font-weight:bold;"/>
+
+            <Label text="Terminal or App"
+                   style="-fx-text-fill:#a8b3c9; -fx-font-size:16;" />
+
+            <GridPane hgap="40" vgap="40">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50"/>
+                </columnConstraints>
+
+                <rowConstraints>
+                    <RowConstraints percentHeight="50"/>
+                    <RowConstraints percentHeight="50"/>
+                </rowConstraints>
+
+                <StackPane fx:id="terminalCard"
+                           onMouseClicked="#onTerminalClicked"
+                           GridPane.rowIndex="0" GridPane.columnIndex="0"
+                           style="-fx-padding:25; -fx-background-radius:25; -fx-cursor:hand;
+                                  -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.5),35,0.3,0,10);
+                                  -fx-background-color: linear-gradient(to bottom right,#673ab7,#311b92);">
+                    <VBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="Terminal"
+                               style="-fx-text-fill:white; -fx-font-size:26; -fx-font-weight:bold;"/>
+                        <Label text="Make reservations"
+                               style="-fx-text-fill:#cdd6f6; -fx-font-size:14;"/>
+                    </VBox>
+                </StackPane>
+
+                <StackPane fx:id="appCard"
+                           onMouseClicked="#onAppClicked"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"
+                           style="-fx-padding:25; -fx-background-radius:25; -fx-cursor:hand;
+                                  -fx-effect:dropshadow(gaussian, rgba(0,0,0,0.5),35,0.3,0,10);
+                                  -fx-background-color: linear-gradient(to bottom right,#ffa726,#e65100);">
+                    <VBox alignment="CENTER_LEFT" spacing="8">
+                        <Label text="Application"
+                               style="-fx-text-fill:white; -fx-font-size:26; -fx-font-weight:bold;"/>
+                        <Label text="Make reservations, change personal info, Discount 10%"
+                               style="-fx-text-fill:#cdd6f6; -fx-font-size:14;"/>
+                    </VBox>
+                </StackPane>
+            </GridPane>
+        </VBox>
+    </children>
+</AnchorPane>

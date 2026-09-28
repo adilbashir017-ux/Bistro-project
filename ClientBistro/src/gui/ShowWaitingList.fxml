@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.ShowWaitingListController"
+            style="-fx-background-color: linear-gradient(to bottom, #0e1320, #111b34);">
+
+            <top>
+              <HBox alignment="CENTER_RIGHT" spacing="12"
+              style="-fx-padding: 14 20;">
+            <Button fx:id="backBtn"
+                    text="←"
+                    onAction="#back"
+                    style="-fx-background-radius: 12;
+                           -fx-background-color: #2b2f45;
+                           -fx-text-fill: white;"/>
+
+            <Button fx:id="exitBtn"
+                    text="⏻"
+                    onAction="#exit"
+                    style="-fx-background-radius: 12;
+                           -fx-background-color: #8a1b1b;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;"/>
+        </HBox>
+            </top>
+
+    <center>
+        <VBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 30;">
+
+            <Label text="Waiting List"
+                   style="-fx-text-fill: white;
+                          -fx-font-size: 28;
+                          -fx-font-weight: bold;"/>
+
+            <TableView fx:id="waitingTable" prefWidth="900">
+
+                <columns>
+                    <TableColumn fx:id="orderNumberCol" text="Order #" />
+                    <TableColumn fx:id="dateCol" text="Date" />
+                    <TableColumn fx:id="timeCol" text="Time" />
+                    <TableColumn fx:id="guestsCol" text="Guests" />
+                    <TableColumn fx:id="statusCol" text="Status" />
+                </columns>
+
+            </TableView>
+
+        </VBox>
+    </center>
+</BorderPane>

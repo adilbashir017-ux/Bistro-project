@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="gui.SubscriberReservationAppController" prefWidth="1100"
+    prefHeight="700"
+    style="-fx-background-color: linear-gradient(to bottom, #0e1320, #111b34);">
+
+    <children>
+
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER"
+            vbarPolicy="AS_NEEDED" AnchorPane.topAnchor="0"
+            AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+            AnchorPane.rightAnchor="0" style="-fx-background-color: transparent;">
+
+            <content>
+
+                <VBox spacing="30" alignment="TOP_CENTER" prefWidth="1100">
+
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20" />
+                    </padding>
+
+                    <!-- ===== HEADER ===== -->
+                    <VBox alignment="CENTER" spacing="6" prefWidth="900"
+                        style="-fx-padding: 28 40;
+                                 -fx-background-radius: 30;
+                                 -fx-background-color: linear-gradient(to right, #5240d0, #e3a628);">
+
+                        <Label text="Make a Reservation"
+                            style="-fx-text-fill: white;
+                                      -fx-font-size: 30px;
+                                      -fx-font-weight: bold;" />
+
+                        <Label fx:id="lblWelcome" text="Welcome back"
+                            style="-fx-text-fill: #eeeeee;
+                                      -fx-font-size: 14px;" />
+                    </VBox>
+
+                    <!-- ===== CONTENT ===== -->
+                    <HBox spacing="30" alignment="TOP_CENTER" prefWidth="900">
+
+                        <!-- ===== LEFT CARD ===== -->
+                        <VBox spacing="20" prefWidth="520"
+                            style="-fx-padding: 25;
+                                     -fx-background-radius: 25;
+                                     -fx-background-color: white;">
+
+                            <Label text="Reservation Details"
+                                style="-fx-font-size: 18;
+                                          -fx-font-weight: bold;" />
+
+                            <VBox spacing="6">
+                                <Label text="Reservation Date" />
+                                <DatePicker fx:id="datePicker" prefWidth="460" />
+                            </VBox>
+
+                            <VBox spacing="6">
+                                <Label text="Reservation Time" />
+                                <ComboBox fx:id="timeBox" prefWidth="460" />
+                            </VBox>
+
+                            <VBox spacing="6">
+                                <Label text="Number of Guests" />
+                                <HBox spacing="15" alignment="CENTER_LEFT">
+                                    <Button text="−" onAction="#decGuests" prefWidth="40" />
+                                    <Label fx:id="lblGuests" text="2"
+                                        style="-fx-font-size: 18;
+                                                  -fx-font-weight: bold;" />
+                                    <Button text="+" onAction="#incGuests" prefWidth="40" />
+                                </HBox>
+                            </VBox>
+
+                            <Button text="Reserve Table" onAction="#onReserve"
+                                prefWidth="460"
+                                style="-fx-background-color: #e07b00;
+                                           -fx-text-fill: white;
+                                           -fx-font-size: 16;
+                                           -fx-font-weight: bold;
+                                           -fx-background-radius: 14;" />
+
+                            <Separator />
+
+                            <!-- ===== CANCEL ===== -->
+
+                            <Label text="Already have a reservation?"
+                                style="-fx-font-size: 15;
+                                          -fx-font-weight: bold;" />
+
+                            <TextField fx:id="txtConfirmationCode"
+                                promptText="Enter confirmation code" prefWidth="460" />
+
+                            <Button text="Cancel Reservation"
+                                onAction="#onCancelReservation" prefWidth="460"
+                                style="-fx-background-color: #e74c3c;
+                                           -fx-text-fill: white;
+                                           -fx-font-size: 15;
+                                           -fx-font-weight: bold;
+                                           -fx-background-radius: 14;" />
+
+                            <Button text="Forgot confirmation code?"
+                                onAction="#onForgotConfirmationCode" prefWidth="460"
+                                style="-fx-background-color: transparent;
+                                           -fx-text-fill: #5555aa;
+                                           -fx-font-size: 13;
+                                           -fx-underline: true;" />
+
+                            <Separator />
+
+                            <Button text="Back to Dashboard" onAction="#onBack"
+                                prefWidth="460"
+                                style="-fx-background-color: #2b2f45;
+                                           -fx-text-fill: white;
+                                           -fx-font-size: 14;
+                                           -fx-background-radius: 14;" />
+                        </VBox>
+
+                        <!-- ===== RIGHT CARD ===== -->
+                        <VBox spacing="15" prefWidth="320"
+                            style="-fx-padding: 25;
+                                 -fx-background-radius: 25;
+                                 -fx-background-color: white;">
+
+                            <Label text="Saved Subscriber Details"
+                                style="-fx-font-size: 16;
+                  -fx-font-weight: bold;" />
+
+                            <Separator />
+
+                            <Label text="Name:" style="-fx-font-weight: bold;" />
+                            <Label fx:id="lblName" />
+
+                            <Label text="Email:" style="-fx-font-weight: bold;" />
+                            <HBox spacing="6">
+                                <Label fx:id="lblEmail" />
+                                <Button text="✎" onAction="#onEditEmail" />
+                            </HBox>
+
+                            <Label text="Phone:" style="-fx-font-weight: bold;" />
+                            <HBox spacing="6">
+                                <Label fx:id="lblPhone" />
+                                <Button text="✎" onAction="#onEditPhone" />
+                            </HBox>
+
+                            <!-- NEW: Subscriber ID -->
+                            <Label text="Subscriber ID:" style="-fx-font-weight: bold;" />
+                            <Label fx:id="lblSubscriberId" />
+                        </VBox>
+
+
+                    </HBox>
+                </VBox>
+
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

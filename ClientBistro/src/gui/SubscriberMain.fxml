@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+    xmlns:fx="http://javafx.com/fxml"
+    fx:controller="gui.SubscriberMainController" prefWidth="1000"
+    prefHeight="650"
+    style="-fx-background-color: linear-gradient(to bottom, #0e1320, #111b34);">
+
+    <children>
+        <VBox spacing="30" alignment="TOP_CENTER"
+            AnchorPane.topAnchor="20" AnchorPane.bottomAnchor="20"
+            AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+
+            <!-- ===== HEADER ===== -->
+            <VBox alignment="CENTER" spacing="6" prefWidth="900"
+                maxWidth="900"
+                style="-fx-padding: 28 40;
+                         -fx-background-radius: 30;
+                         -fx-background-color: linear-gradient(to right, #5240d0, #e3a628);
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 25, 0.35, 0, 6);">
+
+                <Label fx:id="lblWelcome" text="Welcome"
+                    style="-fx-text-fill: white;
+                              -fx-font-size: 30px;
+                              -fx-font-weight: bold;" />
+
+                <Label text="Subscriber Dashboard"
+                    style="-fx-text-fill: #eeeeee;
+                              -fx-font-size: 14px;" />
+            </VBox>
+
+            <!-- ===== FEATURE CARDS ===== -->
+            <!-- ===== INFO SECTION ===== -->
+            <VBox spacing="10" alignment="CENTER" prefWidth="900"
+                maxWidth="900"
+                style="-fx-padding: 25;
+             -fx-background-radius: 22;
+             -fx-background-color: rgba(255,255,255,0.05);
+             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 18, 0.3, 0, 5);">
+
+                <Label text="Bistro"
+                    style="-fx-text-fill: white;
+                  -fx-font-size: 34px;
+                  -fx-font-weight: bold;" />
+
+                <Label
+                    text="A smart restaurant reservation system designed for comfort and efficiency."
+                    style="-fx-text-fill: #dcdcdc;
+                  -fx-font-size: 15px;" />
+
+                <Label
+                    text="Reserve tables • Join waiting lists • Pay bills • Track your visits"
+                    style="-fx-text-fill: #bdbdbd;
+                  -fx-font-size: 14px;" />
+            </VBox>
+
+
+            <!-- ===== ACTION BUTTONS ===== -->
+            <VBox spacing="14" alignment="CENTER" prefWidth="900"
+                maxWidth="900">
+
+                <padding>
+                    <Insets top="10" right="0" bottom="0" left="0" />
+                </padding>
+
+                <Button text="Manage Reservation"
+                    onAction="#onMakeReservation" prefWidth="420"
+                    style="-fx-background-radius: 14;
+                               -fx-background-color: #2b2f45;
+                               -fx-text-fill: white;
+                               -fx-font-size: 16;" />
+
+                <Button text="Join / leave Waiting List"
+                    onAction="#onJoinWaitingList" prefWidth="420"
+                    style="-fx-background-radius: 14;
+                               -fx-background-color: #2b2f45;
+                               -fx-text-fill: white;
+                               -fx-font-size: 16;" />
+
+                <Button text="Pay Bill" onAction="#onPayBill" prefWidth="420"
+                    style="-fx-background-radius: 14;
+                               -fx-background-color: #2b2f45;
+                               -fx-text-fill: white;
+                               -fx-font-size: 16;" />
+
+                <Button text="My Account History" onAction="#onMyAccount"
+                    prefWidth="420"
+                    style="-fx-background-radius: 14;
+                               -fx-background-color: #2b2f45;
+                               -fx-text-fill: white;
+                               -fx-font-size: 16;" />
+
+                <Button text="Logout" onAction="#onLogout" prefWidth="420"
+                    style="-fx-background-radius: 14;
+                               -fx-background-color: #8a1b1b;
+                               -fx-text-fill: white;
+                               -fx-font-size: 16;" />
+            </VBox>
+
+        </VBox>
+    </children>
+</AnchorPane>

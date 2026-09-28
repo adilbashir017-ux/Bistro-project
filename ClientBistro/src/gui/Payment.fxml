@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.PaymentController"
+            prefWidth="600" prefHeight="500"
+            style="-fx-background-color: linear-gradient(to bottom, #0e1320, #111b34);">
+
+
+
+    <children>
+        <VBox spacing="25"
+              alignment="CENTER"
+              AnchorPane.topAnchor="40"
+              AnchorPane.leftAnchor="40"
+              AnchorPane.rightAnchor="40">
+
+            <Label text="Payment Summary"
+                   style="-fx-text-fill: white;
+                          -fx-font-size: 26;
+                          -fx-font-weight: bold;"/>
+
+            <VBox spacing="12"
+                  style="-fx-background-color: white;
+                         -fx-padding: 25;
+                         -fx-background-radius: 20;"
+                  prefWidth="450">
+
+                <Label fx:id="lblName"
+                       text="Subscriber: Victor"
+                       style="-fx-font-size: 15;"/>
+
+                <Label fx:id="lblOrder"
+                       text="Order #: 12345"/>
+
+                <Separator/>
+
+                <Label fx:id="lblOriginal"
+                       text="Original Price: ₪200"/>
+
+                <Label text="Subscriber Discount (10%)"
+                       style="-fx-text-fill: green;"/>
+
+                <Label fx:id="lblDiscount"
+                       text="- ₪20"
+                       style="-fx-text-fill: green;"/>
+
+                <Separator/>
+
+                <Label fx:id="lblFinal"
+                       text="Total to Pay: ₪180"
+                       style="-fx-font-size: 18;
+                              -fx-font-weight: bold;"/>
+            </VBox>
+
+            <Button text="Pay Now"
+                    onAction="#onPay"
+                    prefWidth="300"
+                    style="-fx-background-color: #2ecc71;
+                           -fx-text-fill: white;
+                           -fx-font-size: 16;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 16;"/>
+
+            <Button text="Back"
+                    onAction="#onBack"
+                    prefWidth="300"
+                    style="-fx-background-color: #2b2f45;
+                           -fx-text-fill: white;
+                           -fx-background-radius: 16;"/>
+        </VBox>
+    </children>
+</AnchorPane>

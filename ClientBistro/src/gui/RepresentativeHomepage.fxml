@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="1200" prefHeight="650"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.RepresentativeHomepageController"
+            stylesheets="@ManagerHomePage.css"
+            style="-fx-background-color: linear-gradient(to bottom, #0e1320, #111b34);">
+
+    <!-- ================= TOP BAR ================= -->
+    <top>
+        <HBox alignment="CENTER_RIGHT" spacing="10" styleClass="top-bar">
+
+            <Button text="Subscriber Dashboard"
+                    onAction="#onSubscriberDashboard"
+                    styleClass="top-button-primary"/>
+
+            <Button text="Guest Dashboard"
+                    onAction="#onGuestDashboard"
+                    styleClass="top-button-secondary"/>
+
+            <Button fx:id="backBtn"
+                    text="←"
+                    onAction="#back"
+                    styleClass="top-button-normal"/>
+
+            <Button fx:id="exitBtn"
+                    text="⏻"
+                    onAction="#exit"
+                    styleClass="top-button-danger"/>
+        </HBox>
+    </top>
+
+    <!-- ================= CENTER ================= -->
+    <center>
+
+        <ScrollPane fitToWidth="true"
+                    style="-fx-background: transparent;">
+
+            <VBox alignment="TOP_CENTER" spacing="30"
+                  style="-fx-padding: 30;">
+
+                <!-- HEADER -->
+                <VBox alignment="CENTER" spacing="6"
+                      prefWidth="900"
+                      style="-fx-padding: 26 40;
+                             -fx-background-radius: 30;
+                             -fx-background-color: linear-gradient(to right, #5240d0, #e3a628);
+                             -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 25, 0.35, 0, 6);">
+
+                    <Label text="Representative Dashboard"
+                           style="-fx-text-fill: white;
+                                  -fx-font-size: 30;
+                                  -fx-font-weight: bold;"/>
+
+                    <Label text="Manage restaurant operations"
+                           style="-fx-text-fill: #eeeeee;
+                                  -fx-font-size: 14;"/>
+                </VBox>
+
+                <!-- ACTIONS CARD -->
+                <VBox alignment="CENTER"
+                      spacing="18"
+                      prefWidth="600"
+                      styleClass="manager-card">
+
+                    <Label text="Representative Actions"
+                           style="-fx-text-fill: white;
+                                  -fx-font-size: 20;
+                                  -fx-font-weight: bold;"/>
+
+                    <Button text="Register Subscriber"
+                            onAction="#onRegisterSubscriber"
+                            styleClass="manager-button"/>
+
+                    <Button text="Manage Tables"
+                            onAction="#onManageTables"
+                            styleClass="manager-button"/>
+
+                    <Button text="Subscribers List"
+                            onAction="#onSubscribers"
+                            styleClass="manager-button"/>
+
+                    <Button text="Opening Hours"
+                            onAction="#onOpeningHours"
+                            styleClass="manager-button"/>
+
+                    <Button text="View Reservations"
+                            onAction="#onViewReservations"
+                            styleClass="manager-button"/>
+
+                    <Button text="Active Reservations"
+                            onAction="#onActiveReservations"
+                            styleClass="manager-button"/>
+
+                    <Button text="Current Customers"
+                            onAction="#onCurrentCustomers"
+                            styleClass="manager-button"/>
+
+                    <Button text="Waiting List"
+                            onAction="#onWaitingList"
+                            styleClass="manager-button"/>
+
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+
+    </center>
+
+</BorderPane>

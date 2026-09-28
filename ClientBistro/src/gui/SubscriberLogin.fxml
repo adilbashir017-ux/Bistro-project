@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="gui.SubscriberLoginController"
+            prefWidth="420" prefHeight="420"
+            style="-fx-background-color: linear-gradient(to bottom, #0e1320, #111b34);">
+
+    <children>
+        <VBox spacing="14"
+              alignment="CENTER"
+              AnchorPane.topAnchor="0"
+              AnchorPane.bottomAnchor="0"
+              AnchorPane.leftAnchor="0"
+              AnchorPane.rightAnchor="0">
+
+            <padding>
+                <Insets top="25" bottom="25" left="30" right="30"/>
+            </padding>
+
+            <!-- TITLE -->
+            <Label text="Subscriber Login"
+                   style="-fx-font-size: 22px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: white;"/>
+
+            <!-- SUBSCRIBER ID -->
+            <TextField fx:id="txtSubscriberId"
+                       promptText="Subscriber ID"
+                       prefWidth="260"/>
+
+            <!-- SUBSCRIBER NAME -->
+            <TextField fx:id="txtSubscriberName"
+                       promptText="Subscriber Name"
+                       prefWidth="260"/>
+
+            <!-- STATUS / ERROR MESSAGE -->
+            <Label fx:id="lblStatus"
+                   text=""
+                   wrapText="true"
+                   style="-fx-text-fill: #ff4d4d;
+                          -fx-font-size: 13px;"/>
+
+            <!-- NORMAL LOGIN -->
+            <Button text="Login"
+                    prefWidth="260"
+                    onAction="#onLogin"
+                    style="-fx-background-color: #5240d0;
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 10;"/>
+
+            <!-- QR LOGIN -->
+            <Button text="Login with QR"
+                    prefWidth="260"
+                    onAction="#onLoginWithQR"
+                    style="-fx-background-color: #5b4fd6;
+                           -fx-text-fill: white;
+                           -fx-font-size: 14px;
+                           -fx-background-radius: 10;"/>
+
+            <!-- BACK -->
+            <Button text="Back"
+                    prefWidth="260"
+                    onAction="#onBack"
+                    style="-fx-background-color: #2b2f45;
+                           -fx-text-fill: white;
+                           -fx-font-size: 13px;
+                           -fx-background-radius: 10;"/>
+
+        </VBox>
+    </children>
+</AnchorPane>

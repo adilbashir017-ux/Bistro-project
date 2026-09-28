@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="gui.EntryPaymentCodeController"
+      alignment="CENTER"
+      spacing="20"
+      prefWidth="420"
+      prefHeight="320"
+      style="-fx-background-color: linear-gradient(to bottom, #0e1320, #111b34);">
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <!-- TITLE -->
+    <Label text="Enter Confirmation Code"
+           style="-fx-text-fill: white;
+                  -fx-font-size: 22;
+                  -fx-font-weight: bold;"/>
+
+    <!-- SUB TITLE -->
+    <Label text="Please enter your reservation confirmation code to continue payment"
+           wrapText="true"
+           style="-fx-text-fill: #dddddd;
+                  -fx-font-size: 13;"
+           maxWidth="360"/>
+
+    <!-- CONFIRMATION CODE FIELD -->
+    <TextField fx:id="txtConfirmationCode"
+               promptText="Confirmation Code"
+               maxWidth="260"
+               style="-fx-font-size: 14;
+                      -fx-background-radius: 10;"/>
+
+    <!-- CONTINUE -->
+    <Button text="Continue to Payment"
+            onAction="#onContinue"
+            maxWidth="260"
+            style="-fx-background-color: #e07b00;
+                   -fx-text-fill: white;
+                   -fx-font-size: 15;
+                   -fx-font-weight: bold;
+                   -fx-background-radius: 14;"/>
+
+
+    <!-- CANCEL -->
+   <Button text="Cancel"
+        onAction="#onCancel"
+        maxWidth="260"
+        style="-fx-background-color: transparent;
+               -fx-text-fill: #aaaaaa;
+               -fx-underline: true;" />
+
+
+</VBox>

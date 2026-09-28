@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane
+        xmlns="http://javafx.com/javafx/23.0.1"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="gui.ActiveReservationsController"
+        prefWidth="800"
+        prefHeight="500"
+        style="-fx-background-color: #111b34;">
+
+    <!-- ===== BUTTONS TOP-RIGHT ===== -->
+    <HBox alignment="CENTER_RIGHT" spacing="12"
+          AnchorPane.topAnchor="10"
+          AnchorPane.rightAnchor="10">
+        <Button fx:id="backBtn"
+                text="←"
+                onAction="#back"
+                style="-fx-background-radius: 12;
+                       -fx-background-color: #2b2f45;
+                       -fx-text-fill: white;"/>
+        <Button fx:id="exitBtn"
+                text="⏻"
+                onAction="#exit"
+                style="-fx-background-radius: 12;
+                       -fx-background-color: #8a1b1b;
+                       -fx-text-fill: white;
+                       -fx-font-weight: bold;"/>
+    </HBox>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <VBox alignment="TOP_CENTER" spacing="15"
+          AnchorPane.topAnchor="50"
+          AnchorPane.bottomAnchor="20"
+          AnchorPane.leftAnchor="20"
+          AnchorPane.rightAnchor="20">
+
+        <Label text="Active Reservations"
+               style="-fx-text-fill: white;
+                      -fx-font-size: 22;
+                      -fx-font-weight: bold;"/>
+
+        <TableView fx:id="table" prefWidth="760" prefHeight="400">
+            <columns>
+                <TableColumn fx:id="colDate" text="Date"/>
+                <TableColumn fx:id="colTime" text="Time"/>
+                <TableColumn fx:id="colGuests" text="Guests"/>
+                <TableColumn fx:id="colStatus" text="Status"/>
+                <TableColumn fx:id="colTable" text="Table"/>
+            </columns>
+        </TableView>
+
+    </VBox>
+
+</AnchorPane>

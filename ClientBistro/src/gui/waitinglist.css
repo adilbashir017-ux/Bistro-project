@@ -1,0 +1,111 @@
+/* ================= ROOT ================= */
+
+.root {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #0f172a,
+        #020617
+    );
+    -fx-padding: 40;
+    -fx-font-family: "Segoe UI", "Arial";
+}
+
+/* ================= HEADER ================= */
+
+.header {
+    -fx-background-radius: 30;
+    -fx-padding: 20 30 20 30;
+    -fx-background-color: linear-gradient(
+        to right,
+        #7c3aed,
+        #f59e0b
+    );
+}
+
+.header-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.header-subtitle {
+    -fx-font-size: 20px;
+    -fx-text-fill: rgba(255,255,255,0.85);
+}
+
+/* ================= CARD ================= */
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 25;
+    -fx-padding: 35;
+    -fx-max-width: 420;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 25, 0.2, 0, 10);
+}
+
+/* ================= TITLES ================= */
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+
+/* ================= INPUTS ================= */
+
+.text-field {
+    -fx-pref-height: 42;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #d1d5db;
+    -fx-padding: 0 12;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused {
+    -fx-border-color: #7c3aed;
+}
+
+/* ================= BUTTONS ================= */
+
+.primary-btn {
+    -fx-background-color: #f97316;
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-padding: 10 25;
+}
+
+.primary-btn:hover {
+    -fx-background-color: #ea580c;
+}
+
+.danger-btn {
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-padding: 8 22;
+}
+
+.danger-btn:hover {
+    -fx-background-color: #dc2626;
+}
+
+.secondary-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #374151;
+    -fx-font-size: 13px;
+}
+
+.secondary-btn:hover {
+    -fx-text-fill: #111827;
+}
+
+/* ================= SEPARATOR ================= */
+
+.separator {
+    -fx-padding: 10 0 10 0;
+}
