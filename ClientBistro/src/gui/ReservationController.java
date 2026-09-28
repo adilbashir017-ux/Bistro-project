@@ -379,7 +379,7 @@ public class ReservationController implements ReservationHandler {
         } else if (table == -1) {
             client.sendToServer(new Request("INSERT_NEW_ORDER", pendingOrder));
 
-            orderStatusLabel.setText("Order successful. Check your email for confirmation code!");
+            orderStatusLabel.setText("Order successful! Your reservation has been confirmed.");
             orderStatusLabel.setStyle("-fx-text-fill: green;");
 
             suggestedTimesBox.getChildren().clear();

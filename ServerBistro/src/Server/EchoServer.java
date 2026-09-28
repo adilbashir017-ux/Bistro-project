@@ -2526,106 +2526,124 @@ public class EchoServer extends AbstractServer {
      * @throws SQLException if DB operations fail
      * @throws IOException  if sending response fails
      */
-    private void handleGetReportsData(Connection conn, ConnectionToClient client) throws SQLException, IOException {
+	private void handleGetReportsData(Connection conn, ConnectionToClient client) throws SQLException, IOException {
 
-        Map<String, Map<String, Integer>> data = new HashMap<>();
+		Map<String, Map<String, Integer>> data = new HashMap<>();
 
-        Map<String, Integer> reservations = new LinkedHashMap<>();
-        Map<String, Integer> waiting = new LinkedHashMap<>();
+		Map<String, Integer> reservations = new LinkedHashMap<>();
+		Map<String, Integer> waiting = new LinkedHashMap<>();
 
-        Map<String, Integer> arrivalDelaysPoints = new LinkedHashMap<>();
-        Map<String, Integer> waitingTimePoints = new LinkedHashMap<>();
+		Map<String, Integer> arrivalDelaysPoints = new LinkedHashMap<>();
+		Map<String, Integer> waitingTimePoints = new LinkedHashMap<>();
 
-        String reservationSql = """
-                SELECT WEEK(order_date, 1) AS week, COUNT(*) AS total
-                FROM `order`
-                WHERE order_status IN ('BOOKED','SEATED','BILL_SENT','PAID','COMPLETED')
-                  AND MONTH(order_date) = MONTH(CURDATE())
-                  AND YEAR(order_date) = YEAR(CURDATE())
-                GROUP BY WEEK(order_date, 1)
-                ORDER BY WEEK(order_date, 1)
-                """;
+		String reservationSql = """
+				SELECT WEEK(order_date, 1) AS week, COUNT(*) AS total
+				FROM `order`
+				WHERE order_status IN ('BOOKED','SEATED','BILL_SENT','PAID','COMPLETED')
+				  AND MONTH(order_date) = MONTH(CURDATE())
+				  AND YEAR(order_date) = YEAR(CURDATE())
+				GROUP BY WEEK(order_date, 1)
+				ORDER BY WEEK(order_date, 1)
+				""";
 
-        try (PreparedStatement ps = conn.prepareStatement(reservationSql);
-             ResultSet rs = ps.executeQuery()) {
+		try (PreparedStatement ps = conn.prepareStatement(reservationSql); ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
-                reservations.put("Week " + rs.getInt("week"), rs.getInt("total"));
-            }
-        }
+			while (rs.next()) {
+				reservations.put("Week " + rs.getInt("week"), rs.getInt("total"));
+			}
+		}
 
-        String waitingSql = """
-                SELECT WEEK(order_date, 1) AS week, COUNT(*) AS total
-                FROM `order`
-                WHERE order_status IN ('WAITING','WAITING_CALLED')
-                  AND MONTH(order_date) = MONTH(CURDATE())
-                  AND YEAR(order_date) = YEAR(CURDATE())
-                GROUP BY WEEK(order_date, 1)
-                ORDER BY WEEK(order_date, 1)
-                """;
+		String waitingSql = """
+				SELECT WEEK(order_date, 1) AS week, COUNT(*) AS total
+				FROM `order`
+				WHERE order_status IN ('WAITING','WAITING_CALLED')
+				  AND MONTH(order_date) = MONTH(CURDATE())
+				  AND YEAR(order_date) = YEAR(CURDATE())
+				GROUP BY WEEK(order_date, 1)
+				ORDER BY WEEK(order_date, 1)
+				""";
 
-        try (PreparedStatement ps = conn.prepareStatement(waitingSql);
-             ResultSet rs = ps.executeQuery()) {
+		try (PreparedStatement ps = conn.prepareStatement(waitingSql); ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
-                waiting.put("Week " + rs.getInt("week"), rs.getInt("total"));
-            }
-        }
+			while (rs.next()) {
+				waiting.put("Week " + rs.getInt("week"), rs.getInt("total"));
+			}
+		}
 
-        String pointsSql = """
-                SELECT
-                  order_number,
-                  confirmation_code,
-                  order_date,
-                  order_time,
-                  arrival_datetime
-                FROM `order`
-                WHERE arrival_datetime IS NOT NULL
-                  AND MONTH(order_date) = MONTH(CURDATE())
-                  AND YEAR(order_date) = YEAR(CURDATE())
-                ORDER BY order_number
-                """;
+		String pointsSql = """
+		        SELECT
+		            order_number,
+		            order_date,
+		            order_time,
+		            arrival_datetime
+		        FROM `order`
+		        WHERE arrival_datetime IS NOT NULL
+		          AND MONTH(order_date) = MONTH(CURDATE())
+		          AND YEAR(order_date) = YEAR(CURDATE())
+		        ORDER BY order_number
+		        """;
 
-        try (PreparedStatement ps = conn.prepareStatement(pointsSql);
-             ResultSet rs = ps.executeQuery()) {
+		try (PreparedStatement ps = conn.prepareStatement(pointsSql); ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
+			while (rs.next()) {
 
-                int orderNumber = rs.getInt("order_number");
-                int code = rs.getInt("confirmation_code");
+				int orderNumber = rs.getInt("order_number");
 
-                java.sql.Date d = rs.getDate("order_date");
-                java.sql.Time t = rs.getTime("order_time");
-                java.sql.Timestamp arrivalTs = rs.getTimestamp("arrival_datetime");
+				java.sql.Date d = rs.getDate("order_date");
+				java.sql.Time t = rs.getTime("order_time");
+				java.sql.Timestamp arrivalTs = rs.getTimestamp("arrival_datetime");
 
-                if (d == null || t == null || arrivalTs == null) continue;
+				if (d == null || t == null || arrivalTs == null)
+					continue;
 
-                java.time.LocalDateTime planned = java.time.LocalDateTime.of(
-                        d.toLocalDate(),
-                        t.toLocalTime()
-                );
+				java.time.LocalDateTime planned = java.time.LocalDateTime.of(d.toLocalDate(), t.toLocalTime());
 
-                java.time.LocalDateTime actualArrival = arrivalTs.toLocalDateTime();
+				java.time.LocalDateTime actualArrival = arrivalTs.toLocalDateTime();
 
-                long arrivalDelayMin = java.time.Duration.between(planned, actualArrival).toMinutes();
+				long arrivalDelayMin = java.time.Duration.between(planned, actualArrival).toMinutes();
 
-                arrivalDelaysPoints.put(String.valueOf(orderNumber), (int) arrivalDelayMin);
+				arrivalDelaysPoints.put(String.valueOf(orderNumber), (int) arrivalDelayMin);
 
-                java.time.LocalDateTime seatedAt = seatedTimeByCode.get(code);
-                if (seatedAt != null) {
-                    long waitingMin = java.time.Duration.between(actualArrival, seatedAt).toMinutes();
-                    waitingTimePoints.put(String.valueOf(orderNumber), (int) waitingMin);
-                }
-            }
-        }
 
-        data.put("reservations", reservations);
-        data.put("waiting", waiting);
-        data.put("arrivalDelays", arrivalDelaysPoints);
-        data.put("waitingTimes", waitingTimePoints);
+			}
+		}
+		String waitingTimeSql = """
+		        SELECT
+		            order_number,
+		            TIMESTAMPDIFF(
+		                MINUTE,
+		                arrival_datetime,
+		                status_datetime
+		            ) AS waiting_minutes
+		        FROM `order`
+		        WHERE arrival_datetime IS NOT NULL
+		          AND status_datetime IS NOT NULL
+		          AND order_status IN ('SEATED', 'WAITING_SEATED', 'BILL_SENT')
+		          AND MONTH(order_date) = MONTH(CURDATE())
+		          AND YEAR(order_date) = YEAR(CURDATE())
+		          AND status_datetime >= arrival_datetime
+		        ORDER BY order_number
+		        """;
 
-        client.sendToClient(new Response("REPORTS_DATA", data));
-    }
+		try (PreparedStatement ps = conn.prepareStatement(waitingTimeSql);
+		     ResultSet rs = ps.executeQuery()) {
+
+		    while (rs.next()) {
+		        waitingTimePoints.put(
+		                String.valueOf(rs.getInt("order_number")),
+		                rs.getInt("waiting_minutes")
+		        );
+		    }
+		}
+
+		data.put("reservations", reservations);
+		data.put("waiting", waiting);
+		data.put("arrivalDelays", arrivalDelaysPoints);
+		data.put("waitingTimes", waitingTimePoints);
+
+
+		client.sendToClient(new Response("REPORTS_DATA", data));
+	}
 
     /**
      * Updates (or inserts) opening hours for a weekday in {@code openhours}.

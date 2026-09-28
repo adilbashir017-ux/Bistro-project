@@ -12,6 +12,7 @@ Thumbs.db
 # Local credentials and config
 .env
 *.env
+!.env.example
 config.local.*
 secrets.*
 

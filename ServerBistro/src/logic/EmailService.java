@@ -56,12 +56,20 @@ public class EmailService {
     private static void sendEmail(String toEmail, String subject, String body)
             throws MessagingException {
 
+        if (FROM_EMAIL == null || FROM_EMAIL.isBlank()
+                || APP_PASSWORD == null || APP_PASSWORD.isBlank()) {
+            System.out.println("[EMAIL] Email skipped - credentials are not configured.");
+            return;
+        }
+
         Session session = createSession();
 
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(FROM_EMAIL));
-        message.setRecipients(Message.RecipientType.TO,
-                InternetAddress.parse(toEmail));
+        message.setRecipients(
+                Message.RecipientType.TO,
+                InternetAddress.parse(toEmail)
+        );
         message.setSubject(subject);
         message.setText(body);
 
